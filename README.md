@@ -1,1 +1,7 @@
-# nouveau site
+# BTS SIO
+
+### Education
+Bac, BTS
+
+### Experience Professionnelle
+Stages
