@@ -1,143 +1,238 @@
-<!-- Skills Section -->
-<section id="skills" class="skills-section">
-    <h2 class="section-title">Compétences</h2>
-    <div class="skills-container">
-        <!-- Développement existant -->
-        <div class="skill-category">
-            <!-- Skills Section -->
-<section id="skills" class="skills-section">
-    <h2 class="section-title">Compétences</h2>
-    <div class="skills-container">
-        <!-- Développement -->
-        <div class="skill-category">
-            <h3>Développement</h3>
-            <div class="skill-item" data-skill="HTML/CSS">
-                <div class="skill-name">
-                    <i class="fab fa-html5"></i>
-                    HTML/CSS
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="85"></div>
-                </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Rayan BOINA BOINA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Accueil</a></li>
+            <li><a href="#bts-sio">BTS SIO</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+            <button id="themeButton">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="highlight-animated">Rayan BOINA BOINA</span>
+            </h1>
+            <p class="typing-text">Je suis</p>
+            <div class="social-links animated">
+                <a href="https://github.com/rayantruc" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/rayantruc" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="img/Cv_rayan_boinaboina.pdf" id="resumeBtn" class="social-icon" title="Resume">
+                    <i class="fas fa-file-alt"></i>
+                </a>
             </div>
-            <div class="skill-item" data-skill="JavaScript">
-                <div class="skill-name">
-                    <i class="fab fa-js"></i>
-                    JavaScript
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Défiler pour découvrir</p>
+        </div>
+    </section>
+
+    <!-- BTS SIO Section -->
+    <section id="bts-sio" class="bts-section">
+        <h2 class="section-title">BTS SIO</h2>
+        <div class="bts-content">
+            <div class="bts-card">
+                <div class="bts-icon">
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="75"></div>
+                <h3>BTS Services Informatiques aux Organisations</h3>
+                <p>Le BTS SIO est une formation de niveau Bac+2 qui prépare aux métiers de l'informatique. Cette formation permet d'acquérir des compétences techniques et professionnelles dans le domaine du numérique.</p>
+                
+                <div class="options-container">
+                    <div class="option-card">
+                        <h4>Option SISR</h4>
+                        <p>Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                        <ul>
+                            <li>Administration des systèmes</li>
+                            <li>Gestion des réseaux</li>
+                            <li>Cybersécurité</li>
+                            <li>Support et maintenance</li>
+                            <li>Virtualisation</li>
+                            <li>Cloud Computing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-card">
+                        <h4>Option SLAM</h4>
+                        <p>Solutions Logicielles et Applications Métiers</p>
+                        <ul>
+                            <li>Développement d'applications</li>
+                            <li>Programmation orientée objet</li>
+                            <li>Bases de données</li>
+                            <li>Applications web</li>
+                            <li>Applications mobiles</li>
+                            <li>Méthodes agiles</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-item" data-skill="PHP">
-                <div class="skill-name">
-                    <i class="fab fa-php"></i>
-                    PHP
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="70"></div>
+
+                <div class="competences">
+                    <h4>Compétences acquises</h4>
+                    <div class="competences-grid">
+                        <div class="competence-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Cybersécurité</span>
+                        </div>
+                        <div class="competence-item">
+                            <i class="fas fa-database"></i>
+                            <span>Bases de données</span>
+                        </div>
+                        <div class="competence-item">
+                            <i class="fas fa-code"></i>
+                            <span>Développement</span>
+                        </div>
+                        <div class="competence-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Réseaux</span>
+                        </div>
+                        <div class="competence-item">
+                            <i class="fas fa-server"></i>
+                            <span>Systèmes</span>
+                        </div>
+                        <div class="competence-item">
+                            <i class="fas fa-users"></i>
+                            <span>Gestion de projet</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Nouvelle section Réseau -->
-        <div class="skill-category">
-            <h3>Réseau</h3>
-            <div class="skill-item" data-skill="Windows Server">
-                <div class="skill-name">
-                    <i class="fab fa-windows"></i>
-                    Windows Server
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="80"></div>
-                </div>
-            </div>
-            <div class="skill-item" data-skill="Active Directory">
-                <div class="skill-name">
-                    <i class="fas fa-server"></i>
-                    Active Directory
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="75"></div>
-                </div>
-            </div>
-            <div class="skill-item" data-skill="Administration Réseau">
-                <div class="skill-name">
-                    <i class="fas fa-network-wired"></i>
-                    Administration Réseau
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="70"></div>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">À propos</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Étudiant passionné en BTS SIO, je développe mes compétences en informatique avec un intérêt particulier pour le développement web et la cybersécurité. Mon objectif est de devenir un professionnel polyvalent dans le domaine du numérique.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number" data-target="10">0</span>
+                        <span class="stat-label">Projets Réalisés</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="2">0</span>
+                        <span class="stat-label">Années d'Études</span>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Nouvelle section Sécurité -->
-        <div class="skill-category">
-            <h3>Sécurité</h3>
-            <div class="skill-item" data-skill="Cybersécurité">
-                <div class="skill-name">
-                    <i class="fas fa-shield-alt"></i>
-                    Cybersécurité
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <h2 class="section-title">Compétences</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Développement</h3>
+                <div class="skill-item" data-skill="HTML/CSS">
+                    <div class="skill-name">
+                        <i class="fab fa-html5"></i>
+                        HTML/CSS
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="85"></div>
+                    </div>
                 </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="75"></div>
+                <div class="skill-item" data-skill="JavaScript">
+                    <div class="skill-name">
+                        <i class="fab fa-js"></i>
+                        JavaScript
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="75"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-skill="PHP">
+                    <div class="skill-name">
+                        <i class="fab fa-php"></i>
+                        PHP
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="70"></div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-item" data-skill="Pare-feu">
-                <div class="skill-name">
-                    <i class="fas fa-lock"></i>
-                    Pare-feu
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="app">Applications</button>
+            <button class="filter-btn" data-filter="other">Autres</button>
+        </div>
+        <div class="projects-grid"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name">Nom</label>
                 </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="70"></div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
                 </div>
-            </div>
+                <div class="form-group">
+                    <textarea id="message" required></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <div id="modal-links"></div>
         </div>
     </div>
-</section>
-            <h3>Développement</h3>
-            <div class="skill-item" data-skill="HTML/CSS">
-                <div class="skill-name">
-                    <i class="fab fa-html5"></i>
-                    HTML/CSS
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="85"></div>
-                </div>
-            </div>
-            <div class="skill-item" data-skill="JavaScript">
-                <div class="skill-name">
-                    <i class="fab fa-js"></i>
-                    JavaScript
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="75"></div>
-                </div>
-            </div>
-            <div class="skill-item" data-skill="PHP">
-                <div class="skill-name">
-                    <i class="fab fa-php"></i>
-                    PHP
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="70"></div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Nouvelle section Réseau -->
-        <div class="skill-category">
-            <h3>Réseau</h3>
-            <div class="skill-item" data-skill="Windows Server">
-                <div class="skill-name">
-                    <i class="fab fa-windows"></i>
-                    Windows Server
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" data-progress="80"></div>
-                </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Rayan BOINA BOINA - Portfolio</p>
+            <div class="footer-social">
+                <a href="https://github.com/rayantruc" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/rayantruc" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
-    </div>
-</section>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
