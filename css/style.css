@@ -389,3 +389,37 @@ body {
         gap: 1rem;
     }
 }
+/* Network Skills Specific Styles */
+.skill-item[data-skill="Windows Server"] .skill-name i,
+.skill-item[data-skill="Administration Réseau"] .skill-name i,
+.skill-item[data-skill="Active Directory"] .skill-name i {
+    width: 25px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Skill Category Spacing */
+.skill-category {
+    margin-bottom: 2.5rem;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+/* Animation pour les compétences réseau */
+.skill-category:hover .skill-progress {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
