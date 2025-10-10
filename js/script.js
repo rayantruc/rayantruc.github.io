@@ -173,26 +173,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Gestion du formulaire de contact
+// Gestion du formulaire de contact avec Formspree
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = contactForm.querySelector('.submit-btn');
+    const formStatus = contactForm.querySelector('.form-status');
+    
+    // Désactiver le bouton et montrer l'état "en cours"
     submitBtn.disabled = true;
     submitBtn.textContent = 'Envoi en cours...';
+    formStatus.className = 'form-status';
+    formStatus.style.display = 'none';
 
     try {
-        // Simulation d'envoi (à remplacer par votre logique d'envoi réelle)
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Succès
+            formStatus.textContent = 'Message envoyé avec succès !';
+            formStatus.classList.add('success-message');
+            contactForm.reset();
+        } else {
+            // Erreur de réponse du serveur
+            throw new Error('Erreur lors de l\'envoi du message.');
+        }
+    } catch (error) {
+        // Erreur de réseau ou autre
+        formStatus.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+        formStatus.classList.add('error-message');
+    } finally {
+        // Afficher le message de statut
+        formStatus.style.display = 'block';
         
-        contactForm.reset();
-        submitBtn.textContent = 'Message envoyé !';
+        // Réinitialiser le bouton après 2 secondes
         setTimeout(() => {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Envoyer';
         }, 2000);
-    } catch (error) {
-        submitBtn.textContent = 'Erreur, réessayez';
-        submitBtn.disabled = false;
+
+        // Cacher le message de statut après 5 secondes
+        setTimeout(() => {
+            formStatus.style.display = 'none';
+        }, 5000);
     }
 });
 
@@ -228,3 +257,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
