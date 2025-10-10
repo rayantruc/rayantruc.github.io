@@ -1,33 +1,23 @@
-// Project Data
+// Initialisation des variables globales
 const projects = [
     {
-        title: "Project 1",
-        description: "A web application built with React",
+        title: "Portfolio Personnel",
+        description: "Site web portfolio responsive avec HTML, CSS et JavaScript",
         category: "web",
-        image: "img/project1.svg",
+        image: "img/portfolio.jpg",
         links: {
-            live: "https://project1.com",
-            github: "https://github.com/username/project1"
+            live: "https://rayantruc.github.io",
+            github: "https://github.com/rayantruc/rayantruc.github.io"
         }
     },
     {
-        title: "Project 2",
-        description: "Mobile app for productivity",
+        title: "Application de Gestion",
+        description: "Application de gestion de stocks et de commandes",
         category: "app",
-        image: "img/project2.svg",
+        image: "img/gestion.jpg",
         links: {
-            live: "https://project2.com",
-            github: "https://github.com/username/project2"
-        }
-    },
-    {
-        title: "Portfolio Website",
-        description: "Personal portfolio built with HTML, CSS, JS",
-        category: "web",
-        image: "img/project3.svg",
-        links: {
-            live: "https://yourportfolio.com",
-            github: "https://github.com/username/portfolio"
+            live: "#",
+            github: "https://github.com/rayantruc/gestion-app"
         }
     }
 ];
@@ -41,56 +31,69 @@ const contactForm = document.getElementById('contactForm');
 const skillBars = document.querySelectorAll('.skill-progress');
 const statNumbers = document.querySelectorAll('.stat-number');
 
-// Theme Toggle
+// Theme Toggle avec localStorage
+const currentTheme = localStorage.getItem('theme') || 'light';
+document.body.dataset.theme = currentTheme;
+themeButton.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
 themeButton.addEventListener('click', () => {
-    document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-    themeButton.textContent = document.body.dataset.theme === 'dark' ? '☀️' : '🌙';
+    const newTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.body.dataset.theme = newTheme;
+    themeButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', newTheme);
 });
 
-// Typing Animation
-const roles = ['developpeur web', 'Informatitien réseau', 'Problem Solver'];
+// Typing Animation améliorée
+const roles = ['Développeur Web', 'Étudiant en BTS SIO', 'Passionné d\'Informatique'];
 let roleIndex = 0;
 let charIndex = 0;
+let isDeleting = false;
+let typingDelay = 100;
 
 function typeText() {
     const typingText = document.querySelector('.typing-text');
     const currentRole = roles[roleIndex];
-
-    if (charIndex < currentRole.length) {
-        typingText.textContent = "Je suis " + currentRole.substring(0, charIndex + 1);
+    
+    if (!isDeleting && charIndex <= currentRole.length) {
+        typingText.textContent = "Je suis " + currentRole.substring(0, charIndex);
         charIndex++;
-        setTimeout(typeText, 100);
-    } else {
-        setTimeout(eraseText, 2000);
-    }
-}
-
-function eraseText() {
-    const typingText = document.querySelector('.typing-text');
-    const currentRole = roles[roleIndex];
-
-    if (charIndex > 0) {
-        typingText.textContent = "Je suis " + currentRole.substring(0, charIndex - 1);
+        typingDelay = 100;
+    } else if (isDeleting && charIndex >= 0) {
+        typingText.textContent = "Je suis " + currentRole.substring(0, charIndex);
         charIndex--;
-        setTimeout(eraseText, 50);
-    } else {
-        roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeText, 500);
+        typingDelay = 50;
     }
-}
-typeText();
 
-// Project Filtering
+    if (charIndex === currentRole.length + 1) {
+        isDeleting = true;
+        typingDelay = 2000;
+    } else if (charIndex === 0 && isDeleting) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typingDelay = 500;
+    }
+
+    setTimeout(typeText, typingDelay);
+}
+
+// Démarrer l'animation de typing
+document.addEventListener('DOMContentLoaded', typeText);
+
+// Gestion des projets
 function filterProjects(category) {
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+        const shouldShow = category === 'all' || card.dataset.category === category;
+        card.style.opacity = '0';
+        setTimeout(() => {
+            card.style.display = shouldShow ? 'block' : 'none';
+            if (shouldShow) {
+                card.style.opacity = '1';
+            }
+        }, 300);
     });
 }
+
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -99,110 +102,101 @@ filterButtons.forEach(button => {
     });
 });
 
-// Skill Animation
+// Animation des compétences
 function animateSkills() {
     skillBars.forEach(bar => {
         const progress = bar.dataset.progress;
-        bar.style.width = `${progress}%`;
+        setTimeout(() => {
+            bar.style.width = `${progress}%`;
+        }, 200);
     });
 }
 
-// Animate stats on scroll
+// Animation des statistiques
 let statsAnimated = false;
 function animateStats() {
     if (statsAnimated) return;
+    
     statNumbers.forEach(stat => {
-        let target = +stat.dataset.target;
-        let count = 0;
-        let increment = Math.ceil(target / 40);
-        let interval = setInterval(() => {
-            count += increment;
-            if (count >= target) {
+        const target = parseInt(stat.dataset.target);
+        let current = 0;
+        const increment = target / 40;
+        const interval = setInterval(() => {
+            if (current >= target) {
                 stat.textContent = target;
                 clearInterval(interval);
             } else {
-                stat.textContent = count;
+                current += increment;
+                stat.textContent = Math.round(current);
             }
-        }, 40);
+        }, 50);
     });
     statsAnimated = true;
 }
 
-// Intersection Observer for skill animation & stats
-const skillsSection = document.querySelector('#skills');
-const aboutSection = document.querySelector('#about');
-if (skillsSection) {
-    const observerSkills = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) animateSkills();
-        });
-    }, { threshold: 0.5 });
-    observerSkills.observe(skillsSection);
-}
-if (aboutSection) {
-    const observerStats = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) animateStats();
-        });
-    }, { threshold: 0.6 });
-    observerStats.observe(aboutSection);
-}
+// Intersection Observer pour les animations au scroll
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            if (entry.target.classList.contains('skill-progress')) {
+                animateSkills();
+            } else if (entry.target.classList.contains('stats')) {
+                animateStats();
+            } else if (entry.target.classList.contains('bts-card')) {
+                entry.target.style.animation = 'slideUp 0.8s var(--animation-timing) forwards';
+            }
+            observer.unobserve(entry.target);
+        }
+    });
+};
 
-// Smooth scroll for navigation
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
+const observer = new IntersectionObserver(observerCallback, {
+    threshold: 0.2
+});
+
+// Observer les éléments pour les animations
+document.querySelectorAll('.skill-progress, .stats, .bts-card').forEach(el => {
+    observer.observe(el);
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            window.scrollTo({
-                top: targetSection.offsetTop - 80,
-                behavior: 'smooth'
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     });
 });
 
-// Contact Form
-contactForm.addEventListener('submit', (e) => {
+// Gestion du formulaire de contact
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
 
-    // Here you would typically send the form data to a server
-    contactForm.reset();
-    alert('Thank you for your message! I will get back to you soon.');
-});
-
-// Modal Functions
-function openModal(project) {
-    const modalTitle = document.getElementById('modal-title');
-    const modalDescription = document.getElementById('modal-description');
-    const modalLinks = document.getElementById('modal-links');
-
-    modalTitle.textContent = project.title;
-    modalDescription.textContent = project.description;
-    modalLinks.innerHTML = `
-        <a href="${project.links.live}" target="_blank" class="filter-btn" style="margin-right:1rem;">Live Demo</a>
-        <a href="${project.links.github}" target="_blank" class="filter-btn">GitHub</a>
-    `;
-
-    modal.style.display = 'block';
-}
-
-document.querySelector('.close-modal').addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    try {
+        // Simulation d'envoi (à remplacer par votre logique d'envoi réelle)
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        contactForm.reset();
+        submitBtn.textContent = 'Message envoyé !';
+        setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Envoyer';
+        }, 2000);
+    } catch (error) {
+        submitBtn.textContent = 'Erreur, réessayez';
+        submitBtn.disabled = false;
     }
 });
 
-// Initialize Projects
+// Initialisation des projets
 function initializeProjects() {
     projectsGrid.innerHTML = '';
     projects.forEach(project => {
@@ -213,14 +207,24 @@ function initializeProjects() {
             <img src="${project.image}" alt="${project.title}">
             <h3>${project.title}</h3>
             <p>${project.description}</p>
+            <div class="project-links">
+                <a href="${project.links.live}" target="_blank" class="btn btn-primary">Voir le projet</a>
+                <a href="${project.links.github}" target="_blank" class="btn btn-secondary">GitHub</a>
+            </div>
         `;
-        projectCard.addEventListener('click', () => openModal(project));
         projectsGrid.appendChild(projectCard);
     });
 }
 
-// Initialize when DOM is loaded
+// Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
     initializeProjects();
-    animateSkills();
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
 });
