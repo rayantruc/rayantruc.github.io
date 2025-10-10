@@ -453,3 +453,67 @@ body {
     50% { opacity: 0.7; }
     100% { opacity: 1; }
 }
+
+/* Messages de statut du formulaire */
+.form-status {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    display: none;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.success-message {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    display: block;
+}
+
+.error-message {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #F44336;
+    border: 1px solid #F44336;
+    display: block;
+}
+
+/* Ajustements pour le mode sombre */
+[data-theme="dark"] .success-message {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: #81c784;
+}
+
+[data-theme="dark"] .error-message {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #e57373;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Style pour le textarea */
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Style pour le label du textarea */
+.form-group textarea ~ label {
+    top: 1rem;
+    transform: none;
+}
+
+.form-group textarea:focus ~ label,
+.form-group textarea:valid ~ label {
+    top: -0.5rem;
+    background: var(--card-bg);
+}
