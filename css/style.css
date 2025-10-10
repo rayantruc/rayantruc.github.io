@@ -16,6 +16,10 @@
     --card-bg: #162447;
     --secondary-color: #8a9aff;
     --box-shadow: 0 4px 16px rgba(71, 118, 230, 0.2);
+    --input-background: #e3e3e3;
+    --form-text-color: #333333;
+    --label-bg: #162447;
+    --input-placeholder: #666666;
 }
 
 * {
@@ -85,6 +89,10 @@ body {
     text-align: center;
     background: var(--gradient-secondary);
     position: relative;
+}
+
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #162447 100%);
 }
 
 .hero-content h1 {
@@ -181,6 +189,10 @@ body {
     background: var(--gradient-secondary);
 }
 
+[data-theme="dark"] .skills-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #162447 100%);
+}
+
 .skill-item {
     margin-bottom: 1.5rem;
 }
@@ -257,6 +269,10 @@ body {
     background: var(--gradient-secondary);
 }
 
+[data-theme="dark"] .contact-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #162447 100%);
+}
+
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
@@ -277,8 +293,8 @@ body {
     padding: 0.8rem;
     border: 2px solid var(--secondary-color);
     border-radius: 8px;
-    background: var(--background-color);
-    color: var(--text-color);
+    background: var(--input-background);
+    color: var(--form-text-color);
     transition: all 0.3s;
 }
 
@@ -289,14 +305,27 @@ body {
     transform: translateY(-50%);
     transition: all 0.3s;
     pointer-events: none;
-    color: var(--secondary-color);
+    color: var(--input-placeholder);
+    background: var(--label-bg);
+    padding: 0 0.5rem;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background: var(--input-background);
+    color: var(--form-text-color);
+}
+
+[data-theme="dark"] .form-group label {
+    background: var(--label-bg);
+    color: var(--text-color);
 }
 
 .form-group input:focus ~ label,
 .form-group input:valid ~ label {
     top: 0;
     font-size: 0.8rem;
-    background: var(--background-color);
+    background: var(--card-bg);
     padding: 0 0.5rem;
 }
 
@@ -389,6 +418,7 @@ body {
         gap: 1rem;
     }
 }
+
 /* Network Skills Specific Styles */
 .skill-item[data-skill="Windows Server"] .skill-name i,
 .skill-item[data-skill="Administration Réseau"] .skill-name i,
