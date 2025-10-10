@@ -4,13 +4,32 @@ const projects = [
         title: "Project 1",
         description: "A web application built with React",
         category: "web",
-        image: "brand-asana.svg",
+        image: "img/project1.svg",
         links: {
             live: "https://project1.com",
             github: "https://github.com/username/project1"
         }
     },
-    // Add more projects here
+    {
+        title: "Project 2",
+        description: "Mobile app for productivity",
+        category: "app",
+        image: "img/project2.svg",
+        links: {
+            live: "https://project2.com",
+            github: "https://github.com/username/project2"
+        }
+    },
+    {
+        title: "Portfolio Website",
+        description: "Personal portfolio built with HTML, CSS, JS",
+        category: "web",
+        image: "img/project3.svg",
+        links: {
+            live: "https://yourportfolio.com",
+            github: "https://github.com/username/portfolio"
+        }
+    }
 ];
 
 // DOM Elements
@@ -20,6 +39,7 @@ const filterButtons = document.querySelectorAll('.filter-btn');
 const modal = document.getElementById('modal');
 const contactForm = document.getElementById('contactForm');
 const skillBars = document.querySelectorAll('.skill-progress');
+const statNumbers = document.querySelectorAll('.stat-number');
 
 // Theme Toggle
 themeButton.addEventListener('click', () => {
@@ -35,7 +55,7 @@ let charIndex = 0;
 function typeText() {
     const typingText = document.querySelector('.typing-text');
     const currentRole = roles[roleIndex];
-    
+
     if (charIndex < currentRole.length) {
         typingText.textContent = "Je suis " + currentRole.substring(0, charIndex + 1);
         charIndex++;
@@ -48,7 +68,7 @@ function typeText() {
 function eraseText() {
     const typingText = document.querySelector('.typing-text');
     const currentRole = roles[roleIndex];
-    
+
     if (charIndex > 0) {
         typingText.textContent = "Je suis " + currentRole.substring(0, charIndex - 1);
         charIndex--;
@@ -58,8 +78,6 @@ function eraseText() {
         setTimeout(typeText, 500);
     }
 }
-
-// Initialize typing animation
 typeText();
 
 // Project Filtering
@@ -73,7 +91,6 @@ function filterProjects(category) {
         }
     });
 }
-
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -90,16 +107,61 @@ function animateSkills() {
     });
 }
 
-// Intersection Observer for skill animation
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateSkills();
+// Animate stats on scroll
+let statsAnimated = false;
+function animateStats() {
+    if (statsAnimated) return;
+    statNumbers.forEach(stat => {
+        let target = +stat.dataset.target;
+        let count = 0;
+        let increment = Math.ceil(target / 40);
+        let interval = setInterval(() => {
+            count += increment;
+            if (count >= target) {
+                stat.textContent = target;
+                clearInterval(interval);
+            } else {
+                stat.textContent = count;
+            }
+        }, 40);
+    });
+    statsAnimated = true;
+}
+
+// Intersection Observer for skill animation & stats
+const skillsSection = document.querySelector('#skills');
+const aboutSection = document.querySelector('#about');
+if (skillsSection) {
+    const observerSkills = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) animateSkills();
+        });
+    }, { threshold: 0.5 });
+    observerSkills.observe(skillsSection);
+}
+if (aboutSection) {
+    const observerStats = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) animateStats();
+        });
+    }, { threshold: 0.6 });
+    observerStats.observe(aboutSection);
+}
+
+// Smooth scroll for navigation
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
         }
     });
 });
-
-observer.observe(document.querySelector('#skills'));
 
 // Contact Form
 contactForm.addEventListener('submit', (e) => {
@@ -109,9 +171,8 @@ contactForm.addEventListener('submit', (e) => {
         email: document.getElementById('email').value,
         message: document.getElementById('message').value
     };
-    
+
     // Here you would typically send the form data to a server
-    console.log('Form submitted:', formData);
     contactForm.reset();
     alert('Thank you for your message! I will get back to you soon.');
 });
@@ -121,21 +182,20 @@ function openModal(project) {
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
     const modalLinks = document.getElementById('modal-links');
-    
+
     modalTitle.textContent = project.title;
     modalDescription.textContent = project.description;
     modalLinks.innerHTML = `
-        <a href="${project.links.live}" target="_blank">Live Demo</a>
-        <a href="${project.links.github}" target="_blank">GitHub</a>
+        <a href="${project.links.live}" target="_blank" class="filter-btn" style="margin-right:1rem;">Live Demo</a>
+        <a href="${project.links.github}" target="_blank" class="filter-btn">GitHub</a>
     `;
-    
+
     modal.style.display = 'block';
 }
 
 document.querySelector('.close-modal').addEventListener('click', () => {
     modal.style.display = 'none';
 });
-
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = 'none';
@@ -144,6 +204,7 @@ window.addEventListener('click', (e) => {
 
 // Initialize Projects
 function initializeProjects() {
+    projectsGrid.innerHTML = '';
     projects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
