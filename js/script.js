@@ -4,7 +4,7 @@ const projects = [
         title: "Portfolio Personnel",
         description: "Site web portfolio responsive avec HTML, CSS et JavaScript",
         category: "web",
-        image: "img/portfolio.jpg",
+        image: "img/port.svg",
         links: {
             live: "https://rayantruc.github.io",
             github: "https://github.com/rayantruc/rayantruc.github.io"
@@ -14,7 +14,7 @@ const projects = [
         title: "Application de Gestion",
         description: "Application de gestion de stocks et de commandes",
         category: "app",
-        image: "img/gestion.jpg",
+        image: "img/gestion.svg",
         links: {
             live: "#",
             github: "https://github.com/rayantruc/gestion-app"
@@ -257,4 +257,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
