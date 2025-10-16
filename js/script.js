@@ -14,7 +14,7 @@ const projects = [
         title: "Application de Gestion",
         description: "Application de gestion de stocks et de commandes",
         category: "app",
-        image: "img/gestion.svg",
+        image: "img/icons8-projet-50.png",
         links: {
             live: "#",
             github: "https://github.com/rayantruc/gestion-app"
@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 
