@@ -4,7 +4,7 @@ const projects = [
         title: "Portfolio Personnel",
         description: "Site web portfolio responsive avec HTML, CSS et JavaScript",
         category: "web",
-        image: "img/port.svg",
+        image: "img/icons8-projet-50.png",
         links: {
             live: "https://rayantruc.github.io",
             github: "https://github.com/rayantruc/rayantruc.github.io"
@@ -257,5 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
