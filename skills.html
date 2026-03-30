@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences — Rayan BOINA BOINA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">RBB</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="skills.html" class="active">Compétences</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeButton" title="Changer le thème">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <span class="section-tag">Savoir-faire</span>
+            <h1>Compétences</h1>
+            <p>Mes outils et technologies</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <div class="skills-layout">
+                <!-- Développement -->
+                <div class="skill-category-card reveal">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Développement Web</h3>
+                    </div>
+                    <div class="skill-bars">
+                        <div class="skill-item">
+                            <div class="skill-meta">
+                                <div class="skill-name-wrap">
+                                    <i class="fab fa-html5" style="color:#E34F26"></i>
+                                    <span>HTML / CSS</span>
+                                </div>
+                                <span class="skill-pct">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-meta">
+                                <div class="skill-name-wrap">
+                                    <i class="fab fa-js" style="color:#F7DF1E"></i>
+                                    <span>JavaScript</span>
+                                </div>
+                                <span class="skill-pct">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-meta">
+                                <div class="skill-name-wrap">
+                                    <i class="fab fa-php" style="color:#777BB4"></i>
+                                    <span>PHP</span>
+                                </div>
+                                <span class="skill-pct">40%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="40"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Réseau -->
+                <div class="skill-category-card reveal">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Réseaux & Systèmes</h3>
+                    </div>
+                    <div class="skill-bars">
+                        <div class="skill-item">
+                            <div class="skill-meta">
+                                <div class="skill-name-wrap">
+                                    <i class="fab fa-windows" style="color:#00A4EF"></i>
+                                    <span>Windows Server</span>
+                                </div>
+                                <span class="skill-pct">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-meta">
+                                <div class="skill-name-wrap">
+                                    <i class="fas fa-network-wired" style="color:var(--primary)"></i>
+                                    <span>Administration Réseau</span>
+                                </div>
+                                <span class="skill-pct">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-meta">
+                                <div class="skill-name-wrap">
+                                    <i class="fas fa-users-cog" style="color:var(--primary)"></i>
+                                    <span>Active Directory</span>
+                                </div>
+                                <span class="skill-pct">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autres -->
+                <div class="skill-category-card reveal">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Bases de données</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="skill-tag"><i class="fas fa-table"></i> SQL</span>
+                        <span class="skill-tag"><i class="fas fa-project-diagram"></i> Modélisation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category-card reveal">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Outils & Méthodes</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="skill-tag"><i class="fas fa-cogs"></i> Agile</span>
+                        <span class="skill-tag"><i class="fas fa-shield-alt"></i> Cybersécurité</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i> Virtualisation</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="nav-brand">RBB</span>
+                    <p>Étudiant BTS SIO — Passionné d'informatique</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="bts.html">BTS SIO</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="projects.html">Projets</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://github.com/rayantruc" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rayan BOINA BOINA — Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

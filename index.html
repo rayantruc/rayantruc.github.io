@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayan BOINA BOINA — Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">RBB</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="skills.html">Compétences</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeButton" title="Changer le thème">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb orb-1"></div>
+            <div class="hero-orb orb-2"></div>
+            <div class="hero-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Disponible pour stage
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-name">Rayan</span>
+                <span class="hero-name accent">BOINA BOINA</span>
+            </h1>
+            <p class="hero-subtitle">
+                Je suis <span class="typing-text" id="typingText"></span><span class="cursor">|</span>
+            </p>
+            <div class="hero-cta">
+                <a href="projects.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Voir mes projets
+                </a>
+                <a href="img/Cv_rayan_boinaboina.pdf" class="btn btn-outline" target="_blank">
+                    <i class="fas fa-file-alt"></i> Télécharger CV
+                </a>
+            </div>
+            <div class="hero-social">
+                <a href="https://github.com/rayantruc" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="contact.html" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card-stack">
+                <div class="floating-card card-1">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML / CSS</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Réseaux</span>
+                </div>
+                <div class="floating-card card-4">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Cybersécurité</span>
+                </div>
+                <div class="hero-avatar">
+                    <span>RBB</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Défiler</span>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2">0</span>
+                    <span class="stat-label">Projets réalisés</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-label">Années d'études</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Technologies maîtrisées</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Ce que je fais</span>
+                <h2 class="section-title">Mes domaines</h2>
+            </div>
+            <div class="services-grid">
+                <a href="skills.html" class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Développement Web</h3>
+                    <p>Création d'interfaces modernes avec HTML, CSS, JavaScript et PHP.</p>
+                    <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="skills.html" class="service-card featured">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Réseaux & Systèmes</h3>
+                    <p>Administration réseau, Windows Server, Active Directory et virtualisation.</p>
+                    <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="skills.html" class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersécurité</h3>
+                    <p>Sensibilisation aux bonnes pratiques et sécurisation des systèmes.</p>
+                    <span class="service-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Intéressé par mon profil ?</h2>
+                <p>Je suis actuellement en recherche de stage. N'hésitez pas à me contacter.</p>
+                <a href="contact.html" class="btn btn-white">
+                    <i class="fas fa-paper-plane"></i> Me contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="nav-brand">RBB</span>
+                    <p>Étudiant BTS SIO — Passionné d'informatique</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="bts.html">BTS SIO</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="projects.html">Projets</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://github.com/rayantruc" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rayan BOINA BOINA — Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/typing.js"></script>
+</body>
+</html>
