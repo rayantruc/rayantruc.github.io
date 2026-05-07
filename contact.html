@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Rayan BOINA BOINA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">RBB</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="skills.html">Compétences</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeButton" title="Changer le thème">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <span class="section-tag">Me joindre</span>
+            <h1>Contact</h1>
+            <p>Parlons de votre projet</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <div class="contact-layout reveal">
+                <div class="contact-info">
+                    <h2>Restons en contact</h2>
+                    <p>Vous souhaitez me proposer un stage, une collaboration ou simplement échanger ? N'hésitez pas à m'écrire.</p>
+
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <span class="contact-item-label">GitHub</span>
+                                <a href="https://github.com/rayantruc" target="_blank">github.com/rayantruc</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <span class="contact-item-label">LinkedIn</span>
+                                <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank">Rayan BOINA BOINA</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <span class="contact-item-label">Curriculum Vitae</span>
+                                <a href="img/Cv_rayan_boinaboina.pdf" target="_blank">Télécharger mon CV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrap">
+                    <form id="contactForm" action="https://formspree.io/f/mzzjjajy" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nom complet</label>
+                                <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" placeholder="Objet de votre message">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="nav-brand">RBB</span>
+                    <p>Étudiant BTS SIO — Passionné d'informatique</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="bts.html">BTS SIO</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="projects.html">Projets</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://github.com/rayantruc" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rayan BOINA BOINA — Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    formStatus.textContent = '✓ Message envoyé avec succès !';
+                    formStatus.classList.add('success');
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            } catch {
+                formStatus.textContent = '✗ Une erreur est survenue. Veuillez réessayer.';
+                formStatus.classList.add('error');
+            } finally {
+                formStatus.style.display = 'block';
+                setTimeout(() => { submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message'; }, 2000);
+                setTimeout(() => { formStatus.style.display = 'none'; }, 6000);
+            }
+        });
+    </script>
+</body>
+</html>
