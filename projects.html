@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets — Rayan BOINA BOINA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">RBB</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="skills.html">Compétences</a></li>
+            <li><a href="projects.html" class="active">Projets</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeButton" title="Changer le thème">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <span class="section-tag">Réalisations</span>
+            <h1>Mes Projets</h1>
+            <p>Ce que j'ai créé</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Filtres -->
+            <div class="project-filters reveal">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="app">Applications</button>
+                <button class="filter-btn" data-filter="other">Autres</button>
+            </div>
+
+            <!-- Projets -->
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-img">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <h3>Portfolio Personnel</h3>
+                        <p>Site web portfolio responsive avec HTML, CSS et JavaScript. Présentation de mon parcours, compétences et projets.</p>
+                        <div class="project-links">
+                            <a href="https://rayantruc.github.io" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                            <a href="https://github.com/rayantruc/rayantruc.github.io" target="_blank" class="btn btn-outline btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-category="app">
+                    <div class="project-img app-img">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Web</span>
+                        </div>
+                        <h3>Application de Gestion</h3>
+                        <p>Application de gestion de stocks et de commandes. Interface complète pour la saisie, le suivi et le reporting.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary btn-sm disabled">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                            <a href="https://github.com/rayantruc/gestion-app" target="_blank" class="btn btn-outline btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="nav-brand">RBB</span>
+                    <p>Étudiant BTS SIO — Passionné d'informatique</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="bts.html">BTS SIO</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="projects.html">Projets</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://github.com/rayantruc" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rayan BOINA BOINA — Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Filter projects
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
