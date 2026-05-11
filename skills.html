@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences — Rayan BOINA BOINA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-brand">RBB</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="skills.html" class="active">Compétences</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="veille.html">Veille</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeButton" title="Changer le thème">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <span class="section-tag">Savoir-faire</span>
+            <h1>Compétences</h1>
+            <p>Mes outils et technologies</p>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="skills-layout" id="skillsLayout">
+                <!-- Chargé dynamiquement depuis skills-data.json -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="nav-brand">RBB</span>
+                    <p>Étudiant BTS SIO — Passionné d'informatique</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="bts.html">BTS SIO</a>
+                    <a href="about.html">À propos</a>
+                    <a href="skills.html">Compétences</a>
+                    <a href="projects.html">Projets</a>
+                    <a href="veille.html">Veille</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://github.com/rayantruc" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rayan-boina-boina-543227384/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rayan BOINA BOINA — Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Chargement dynamique des compétences depuis skills-data.json
+        fetch('skills-data.json?v=' + Date.now())
+            .then(r => r.json())
+            .then(categories => {
+                const layout = document.getElementById('skillsLayout');
+                layout.innerHTML = '';
+
+                categories.forEach(cat => {
+                    const card = document.createElement('div');
+                    card.className = 'skill-category-card reveal';
+
+                    let contenu = '';
+                    if (cat.type === 'bars') {
+                        contenu = `<div class="skill-bars">` +
+                            cat.competences.map(c => `
+                                <div class="skill-item">
+                                    <div class="skill-meta">
+                                        <div class="skill-name-wrap">
+                                            <i class="${c.icone}" style="color:${c.couleur}"></i>
+                                            <span>${c.nom}</span>
+                                        </div>
+                                        <span class="skill-pct">${c.pourcentage}%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-progress="${c.pourcentage}"></div>
+                                    </div>
+                                </div>`).join('') +
+                            `</div>`;
+                    } else {
+                        contenu = `<div class="skill-tags">` +
+                            cat.competences.map(c =>
+                                `<span class="skill-tag"><i class="${c.icone}"></i> ${c.nom}</span>`
+                            ).join('') +
+                            `</div>`;
+                    }
+
+                    card.innerHTML = `
+                        <div class="skill-cat-header">
+                            <div class="skill-cat-icon"><i class="fas ${cat.icone_categorie}"></i></div>
+                            <h3>${cat.categorie}</h3>
+                        </div>
+                        ${contenu}`;
+
+                    layout.appendChild(card);
+                });
+
+                // Réinitialiser les animations de barres
+                document.querySelectorAll('.skill-progress').forEach(bar => {
+                    const pct = bar.getAttribute('data-progress');
+                    setTimeout(() => { bar.style.width = pct + '%'; }, 100);
+                });
+
+                // Réinitialiser les observers reveal
+                if (typeof initReveal === 'function') initReveal();
+            })
+            .catch(err => {
+                console.error('Impossible de charger skills-data.json', err);
+                document.getElementById('skillsLayout').innerHTML =
+                    '<p style="color:var(--text-2)">Erreur de chargement des compétences.</p>';
+            });
+    </script>
+</body>
+</html>
