@@ -1,0 +1,146 @@
+name: 🎯 Gérer les compétences
+
+on:
+  workflow_dispatch:
+    inputs:
+
+      action:
+        description: "Action à effectuer"
+        required: true
+        type: choice
+        options:
+          - "ajouter"
+          - "modifier"
+          - "supprimer"
+
+      # ── Champs pour AJOUTER / MODIFIER ──────────────────────────────────────
+      categorie_id:
+        description: "ID de la catégorie (ex: dev-web, reseaux, bdd, outils)"
+        required: true
+        type: string
+
+      nom:
+        description: "Nom de la compétence (ex: Python)"
+        required: false
+        type: string
+
+      icone:
+        description: "Classe Font Awesome (ex: fab fa-python)"
+        required: false
+        type: string
+
+      couleur:
+        description: "Couleur héx ou CSS (ex: #3572A5) — pour les barres uniquement"
+        required: false
+        type: string
+
+      pourcentage:
+        description: "Niveau en % (0-100) — pour les barres uniquement"
+        required: false
+        type: string
+
+      # ── Champ pour SUPPRIMER ─────────────────────────────────────────────────
+      nom_a_supprimer:
+        description: "Nom exact de la compétence à supprimer"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  manage-skill:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupération du dépôt
+        uses: actions/checkout@v4
+
+      - name: Modifier skills-data.json
+        env:
+          ACTION:          ${{ github.event.inputs.action }}
+          CATEGORIE_ID:    ${{ github.event.inputs.categorie_id }}
+          NOM:             ${{ github.event.inputs.nom }}
+          ICONE:           ${{ github.event.inputs.icone }}
+          COULEUR:         ${{ github.event.inputs.couleur }}
+          POURCENTAGE:     ${{ github.event.inputs.pourcentage }}
+          NOM_SUPPRIMER:   ${{ github.event.inputs.nom_a_supprimer }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os, sys
+
+          action       = os.environ["ACTION"]
+          cat_id       = os.environ["CATEGORIE_ID"].strip()
+          nom          = os.environ.get("NOM", "").strip()
+          icone        = os.environ.get("ICONE", "").strip()
+          couleur      = os.environ.get("COULEUR", "").strip()
+          pourcentage  = os.environ.get("POURCENTAGE", "").strip()
+          nom_suppr    = os.environ.get("NOM_SUPPRIMER", "").strip()
+
+          with open("skills-data.json", encoding="utf-8") as f:
+              data = json.load(f)
+
+          # Trouver la catégorie cible
+          cat = next((c for c in data if c["id"] == cat_id), None)
+          if cat is None:
+              print(f"❌ Catégorie '{cat_id}' introuvable.")
+              print("   Catégories disponibles :", [c["id"] for c in data])
+              sys.exit(1)
+
+          if action == "ajouter":
+              if not nom or not icone:
+                  print("❌ 'nom' et 'icone' sont obligatoires pour ajouter.")
+                  sys.exit(1)
+              new_skill = {"nom": nom, "icone": icone}
+              if cat["type"] == "bars":
+                  new_skill["couleur"] = couleur or "var(--primary)"
+                  try:
+                      new_skill["pourcentage"] = int(pourcentage)
+                  except ValueError:
+                      print("❌ 'pourcentage' doit être un nombre entier.")
+                      sys.exit(1)
+              cat["competences"].append(new_skill)
+              print(f"✅ Compétence '{nom}' ajoutée dans '{cat_id}'.")
+
+          elif action == "modifier":
+              if not nom:
+                  print("❌ 'nom' est obligatoire pour identifier la compétence à modifier.")
+                  sys.exit(1)
+              skill = next((s for s in cat["competences"] if s["nom"].lower() == nom.lower()), None)
+              if skill is None:
+                  print(f"❌ Compétence '{nom}' introuvable dans '{cat_id}'.")
+                  sys.exit(1)
+              if icone:       skill["icone"]       = icone
+              if couleur:     skill["couleur"]     = couleur
+              if pourcentage:
+                  try:        skill["pourcentage"] = int(pourcentage)
+                  except ValueError:
+                      print("❌ 'pourcentage' doit être un nombre entier.")
+                      sys.exit(1)
+              print(f"✅ Compétence '{nom}' modifiée dans '{cat_id}'.")
+
+          elif action == "supprimer":
+              cible = nom_suppr or nom
+              if not cible:
+                  print("❌ Renseigne 'nom_a_supprimer' pour la suppression.")
+                  sys.exit(1)
+              avant = len(cat["competences"])
+              cat["competences"] = [s for s in cat["competences"] if s["nom"].lower() != cible.lower()]
+              if len(cat["competences"]) == avant:
+                  print(f"❌ Compétence '{cible}' introuvable dans '{cat_id}'.")
+                  sys.exit(1)
+              print(f"✅ Compétence '{cible}' supprimée de '{cat_id}'.")
+
+          with open("skills-data.json", "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+          PYEOF
+
+      - name: Commit et push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add skills-data.json
+          git diff --cached --quiet && echo "Aucun changement." || (
+            git commit -m "🎯 Compétences : ${{ github.event.inputs.action }} '${{ github.event.inputs.nom }}${{ github.event.inputs.nom_a_supprimer }}' dans '${{ github.event.inputs.categorie_id }}'"
+            git push
+          )
