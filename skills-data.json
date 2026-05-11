@@ -5,9 +5,24 @@
     "icone_categorie": "fa-code",
     "type": "bars",
     "competences": [
-      { "nom": "HTML / CSS", "icone": "fab fa-html5", "couleur": "#E34F26", "pourcentage": 85 },
-      { "nom": "JavaScript", "icone": "fab fa-js", "couleur": "#F7DF1E", "pourcentage": 75 },
-      { "nom": "PHP", "icone": "fab fa-php", "couleur": "#777BB4", "pourcentage": 40 }
+      {
+        "nom": "HTML / CSS",
+        "icone": "fab fa-html5",
+        "couleur": "#E34F26",
+        "pourcentage": 85
+      },
+      {
+        "nom": "JavaScript",
+        "icone": "fab fa-js",
+        "couleur": "#F7DF1E",
+        "pourcentage": 75
+      },
+      {
+        "nom": "PHP",
+        "icone": "fab fa-php",
+        "couleur": "#777BB4",
+        "pourcentage": 40
+      }
     ]
   },
   {
@@ -16,9 +31,30 @@
     "icone_categorie": "fa-network-wired",
     "type": "bars",
     "competences": [
-      { "nom": "Windows Server", "icone": "fab fa-windows", "couleur": "#00A4EF", "pourcentage": 80 },
-      { "nom": "Administration Réseau", "icone": "fas fa-network-wired", "couleur": "var(--primary)", "pourcentage": 75 },
-      { "nom": "Active Directory", "icone": "fas fa-users-cog", "couleur": "var(--primary)", "pourcentage": 70 }
+      {
+        "nom": "Windows Server",
+        "icone": "fab fa-windows",
+        "couleur": "#00A4EF",
+        "pourcentage": 80
+      },
+      {
+        "nom": "Administration Réseau",
+        "icone": "fas fa-network-wired",
+        "couleur": "var(--primary)",
+        "pourcentage": 75
+      },
+      {
+        "nom": "Active Directory",
+        "icone": "fas fa-users-cog",
+        "couleur": "var(--primary)",
+        "pourcentage": 70
+      },
+      {
+        "nom": "Active Directory",
+        "icone": "fab",
+        "couleur": "-",
+        "pourcentage": 50
+      }
     ]
   },
   {
@@ -27,9 +63,18 @@
     "icone_categorie": "fa-database",
     "type": "tags",
     "competences": [
-      { "nom": "MySQL", "icone": "fas fa-database" },
-      { "nom": "SQL", "icone": "fas fa-table" },
-      { "nom": "Modélisation", "icone": "fas fa-project-diagram" }
+      {
+        "nom": "MySQL",
+        "icone": "fas fa-database"
+      },
+      {
+        "nom": "SQL",
+        "icone": "fas fa-table"
+      },
+      {
+        "nom": "Modélisation",
+        "icone": "fas fa-project-diagram"
+      }
     ]
   },
   {
@@ -38,11 +83,26 @@
     "icone_categorie": "fa-tools",
     "type": "tags",
     "competences": [
-      { "nom": "Git", "icone": "fab fa-git-alt" },
-      { "nom": "GitHub", "icone": "fab fa-github" },
-      { "nom": "Agile", "icone": "fas fa-cogs" },
-      { "nom": "Cybersécurité", "icone": "fas fa-shield-alt" },
-      { "nom": "Virtualisation", "icone": "fas fa-cloud" }
+      {
+        "nom": "Git",
+        "icone": "fab fa-git-alt"
+      },
+      {
+        "nom": "GitHub",
+        "icone": "fab fa-github"
+      },
+      {
+        "nom": "Agile",
+        "icone": "fas fa-cogs"
+      },
+      {
+        "nom": "Cybersécurité",
+        "icone": "fas fa-shield-alt"
+      },
+      {
+        "nom": "Virtualisation",
+        "icone": "fas fa-cloud"
+      }
     ]
   }
 ]
