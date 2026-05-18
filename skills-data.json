@@ -54,6 +54,12 @@
         "icone": "fab",
         "couleur": "-",
         "pourcentage": 50
+      },
+      {
+        "nom": "AD",
+        "icone": "fab fa-python",
+        "couleur": "#3572A5",
+        "pourcentage": 80
       }
     ]
   },
