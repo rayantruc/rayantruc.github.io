@@ -1,0 +1,46 @@
+# Configuration des catégories de veille.
+# Chaque clé doit correspondre à une classe CSS ".veille-badge.<clé>" déjà
+# définie dans veille.html (securite, ia, cloud, os, dev, reseau existent
+# déjà). Pour ajouter une catégorie totalement nouvelle, il faut aussi
+# ajouter le style CSS correspondant et un bouton de filtre dans veille.html.
+
+categories:
+  ia:
+    label: "Intelligence Artificielle"
+    icon: "fas fa-brain"
+    query: "intelligence artificielle"
+
+  securite:
+    label: "Cybersécurité"
+    icon: "fas fa-shield-alt"
+    query: "cybersécurité OR ransomware OR malware OR faille de sécurité"
+
+  cloud:
+    label: "Cloud"
+    icon: "fas fa-cloud"
+    query: "cloud computing"
+
+  os:
+    label: "Systèmes d'exploitation"
+    icon: "fas fa-desktop"
+    query: "Windows OR macOS OR Linux OR système d'exploitation"
+
+  # --- Catégories déjà supportées par le design, désactivées par défaut ---
+  # dev:
+  #   label: "Développement"
+  #   icon: "fas fa-code"
+  #   query: "langage de programmation OR outils développeur"
+  # reseau:
+  #   label: "Réseaux"
+  #   icon: "fas fa-network-wired"
+  #   query: "réseaux informatiques OR 5G OR wifi"
+
+settings:
+  hl: "fr"
+  gl: "fr"
+  # Nombre max d'articles gardés par catégorie à chaque exécution
+  max_articles_per_category: 3
+  # Longueur max (en mots) du résumé affiché sous le titre — volontairement
+  # court : chaque carte reste un lien + un court extrait vers la source,
+  # jamais une reproduction de l'article original.
+  max_snippet_words: 12
