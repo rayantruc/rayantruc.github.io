@@ -1,0 +1,73 @@
+name: 📰 Mettre à jour la veille
+
+on:
+  # Exécution automatique — tous les lundis à 07h00 UTC
+  schedule:
+    - cron: "0 7 * * 1"
+
+  # Exécution manuelle depuis l'onglet Actions, avec choix des catégories
+  workflow_dispatch:
+    inputs:
+      categories:
+        description: "Catégories à récupérer (ex: ia,securite) ou 'toutes'"
+        required: false
+        default: "toutes"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  update-veille:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Récupération du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configuration de Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installation des dépendances
+        run: pip install -r requirements-veille.txt
+
+      - name: Récupération des actualités et mise à jour de veille.html
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          CATEGORIES_INPUT: ${{ github.event.inputs.categories || 'toutes' }}
+        run: python generate_veille.py --categories "$CATEGORIES_INPUT"
+
+      - name: Commit et push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add veille.html
+          git diff --cached --quiet && echo "Aucun changement." || (
+            git commit -m "📰 Veille : mise à jour automatique ($(date -u +'%Y-%m-%d'))"
+            git push
+          )
+
+      # Un push effectué avec le GITHUB_TOKEN par défaut ne redéclenche pas
+      # automatiquement static.yml (limitation GitHub anti-boucle infinie).
+      # On déploie donc directement ici pour que le site soit à jour de suite.
+      - name: Configuration de Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload de l'artefact du site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Déploiement sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
